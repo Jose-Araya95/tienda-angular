@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Catálogo de Datos (JSONPlaceholder API)</h2>
+
+  <!-- Mensaje de Carga -->
+  <div *ngIf="isLoading" class="status-message">
+    <p>Cargando información desde JSONPlaceholder...</p>
+  </div>
+
+  <!-- Mensaje de Error -->
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Rejilla de Tarjetas -->
+  <div *ngIf="!isLoading && !errorMessage" class="product-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <img [src]="product.thumbnailUrl" [alt]="product.title" class="product-img" />
+      <div class="product-info">
+        <span class="category">REGISTRO #{{ product.id }}</span>
+        <h3>{{ product.title }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
